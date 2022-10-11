@@ -1,0 +1,16 @@
+.div-size {
+
+    background: rgb(244, 244, 244);
+    font-size: 15px;
+    width:50%; 
+    display:inline-table;
+    align-items: center;
+    text-align: center;
+}
+.div-normal {
+    background: rgb(244, 244, 244);
+    font-size: 15px;
+    width:100%; 
+    text-align: center;
+    display:inline-table;
+}

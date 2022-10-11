@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Apostas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Apostas *</a>
+          </li>
+          <li class="nav-item">
+            <po-dropdown p-label="PO Dropdown" [p-actions]="[{ label: 'How to install PO', url: '/guides/how-install' }]">
+            </po-dropdown>
+          </li>
+         
+        </ul>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Valor Inicial" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Gestão" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+      </div>
+    </div>
+  </nav>
