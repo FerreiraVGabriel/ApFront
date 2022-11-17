@@ -18,7 +18,18 @@ export class MarketService  {
         catch (e) {
         }
     
+    }
+
+    addMarket(market:Market) {
+      try {
+        //form
+        var formData: any = new FormData();
+        formData.append("nome", market.nome);
+        return this.httpClient.post(this.urlServiceREST, formData);
       }
+      catch (e) {
+      }
+    }
   
   
 }

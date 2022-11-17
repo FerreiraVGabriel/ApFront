@@ -1,6 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <a class="navbar-brand" href="#">Mercados</a>
-    <!-- <button class="btn btn-outline-success buttonAdd" type="submit">Adicionar</button> -->
-</nav>
+    <po-button p-label="Adicionar" (p-click)="openModalAdd()"> </po-button>
+  </nav>
+  
 <po-table style="width: 20%;" [p-columns]="columns" [p-items]="market">
 </po-table>
+<!-- MODAL -->
+
+<po-modal p-title="Cadastrar Mercados" [p-primary-action]="confirm" [p-secondary-action]="close">
+    <form #optionsForm="ngForm">
+        <div class="row">
+        <div class="form-group col-md-6 mb-3">
+            <label for="inputCity">Nome do mercado</label>
+            <input name="market" id="market" type="text" class="form-control" [(ngModel)]="marketName" required />
+        </div>
+        </div>
+    </form>
+</po-modal>

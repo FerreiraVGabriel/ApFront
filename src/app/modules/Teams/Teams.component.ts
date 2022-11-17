@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PoCheckboxGroupOption, PoComboOption, PoModalAction, PoModalComponent, PoNotificationService } from '@po-ui/ng-components';
+import { PoComboOption, PoModalAction, PoModalComponent, PoNotificationService } from '@po-ui/ng-components';
 import { Country } from 'src/app/models/country.model';
 import { Teams } from 'src/app/models/teams.model';
 import { CountryService } from 'src/app/shared/services/country.service';
@@ -27,7 +27,6 @@ export class TeamsComponent implements OnInit{
                         
     teams: Teams[];
     countries: Country[];
-    option: PoComboOption;
     countryId: string = '';
     teamName:string='';
 
