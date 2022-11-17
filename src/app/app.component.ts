@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PoMenuItem } from '@po-ui/ng-components';
 
@@ -9,14 +10,45 @@ import { PoMenuItem } from '@po-ui/ng-components';
 })
 export class AppComponent {
 
+  constructor(public router:Router){}
+
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) },
-    { label: 'GABRIEL'  },
+    { label: 'Home', action: this.homePage.bind(this) },
+    { label: 'Pais', action: this.countryPage.bind(this) },
+    { label: 'Times', action: this.teamsPage.bind(this) },
+    { label: 'Apostas', action: this.betsPage.bind(this) },
+    { label: 'Mercado', action: this.marketPage.bind(this) },
+    { label: 'Competições', action: this.competitionsPage.bind(this) },
+    { label: 'TESTE', action: this.testePage.bind(this) },
     { label: 'GABRIEL1' }
   ];
 
-  private onClick() {
-    alert('Clicked in menu item')
+  private countryPage() {
+    this.router.navigate(['country']);
+  }
+
+  private teamsPage() {
+    this.router.navigate(['teams']);
+  }
+
+  private homePage() {
+    this.router.navigate(['home']);
+  }
+
+  private betsPage() {
+    this.router.navigate(['bets']);
+  }
+
+  private marketPage() {
+    this.router.navigate(['market']);
+  }
+
+  private competitionsPage() {
+    this.router.navigate(['competitions']);
+  }
+
+  private testePage() {
+    this.router.navigate(['teste']);
   }
 
 }

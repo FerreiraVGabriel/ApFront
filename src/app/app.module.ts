@@ -3,21 +3,36 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PoModule } from '@po-ui/ng-components';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatInputModule} from '@angular/material/input';
 //PO-UI
 import { PoTableModule } from '@po-ui/ng-components';
 import { PoNavbarModule } from '@po-ui/ng-components';
 import { PoDropdownModule } from '@po-ui/ng-components';
+import { PoModalModule } from '@po-ui/ng-components';
+import { PoFieldModule, PoModule } from '@po-ui/ng-components';
 
 //Components
 import { HomeComponent } from './modules/Home/Home.component';
 import { TeamsComponent } from './modules/Teams/Teams.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CountryComponent } from './modules/Country/Country.component';
+import { BetsComponent } from './modules/Bets/Bets.component';
+import { MarketComponent } from './modules/Market/Market.component';
+import { CompetitionsComponent } from './modules/Competitions/Competitions.component';
+
+//Components-Shared
 import { ManagementTableComponent } from './shared/components/management-table/management-table.component';
 import { NavBarItensComponent } from './shared/components/navbar/navbar-itens/navbar-itens.component';
+
+//Module
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+//TESTE
+import { TesteComponent } from './modules/Teste/Teste.component';
+
+
 
 
 @NgModule({
@@ -26,7 +41,12 @@ import { NavBarItensComponent } from './shared/components/navbar/navbar-itens/na
     HomeComponent,
     TeamsComponent,
     ManagementTableComponent,
-    NavBarItensComponent
+    NavBarItensComponent,
+    CountryComponent,
+    BetsComponent,
+    MarketComponent,
+    CompetitionsComponent,
+    TesteComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +57,12 @@ import { NavBarItensComponent } from './shared/components/navbar/navbar-itens/na
     PoNavbarModule,
     NoopAnimationsModule,
     MatInputModule,
-    PoDropdownModule
+    PoDropdownModule,
+    PoModalModule,
+    PoFieldModule,
+    FormsModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

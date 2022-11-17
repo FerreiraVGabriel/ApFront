@@ -8,15 +8,14 @@ import { CountryService } from 'src/app/shared/services/country.service';
 import { TeamsService } from 'src/app/shared/services/teams.service';
 
 
-
 @Component({
-  selector: 'teams',
-  templateUrl: './Teams.component.html',
-  styleUrls: ['./Teams.component.css']
+  selector: 'teste',
+  templateUrl: './Teste.component.html',
+  styleUrls: ['./Teste.component.css']
 })
 
-export class TeamsComponent implements OnInit{
-    
+export class TesteComponent implements OnInit{
+   
   @ViewChild('optionsForm', { static: true }) form: NgForm;
   @ViewChild(PoModalComponent, { static: true }) poModal: PoModalComponent;
   
@@ -24,12 +23,12 @@ export class TeamsComponent implements OnInit{
     public constructor(private teamsService:TeamsService,private countryService:CountryService, 
                         public router:Router, private poNotification: PoNotificationService){}
 
-                        
     teams: Teams[];
     countries: Country[];
     option: PoComboOption;
     countryId: string = '';
-    teamName:string='';
+    team:string='';
+    teste:string='';
 
     close: PoModalAction = {
       action: () => {
@@ -41,7 +40,7 @@ export class TeamsComponent implements OnInit{
   
     confirm: PoModalAction = {
       action: () => {
-        this.addTeams();
+        this.proccessOrder();
       },
       label: 'Confirm'
     };
@@ -59,7 +58,7 @@ export class TeamsComponent implements OnInit{
       this.LoadCountry();
     }
 
-    //Carregar Pais
+
     async LoadCountry(): Promise<void> 
     {
       await this.countryService.readCountry().subscribe((countries: Country[]) => {
@@ -67,7 +66,6 @@ export class TeamsComponent implements OnInit{
       });
     }
 
-    //Carregar Times
     async LoadTeams(): Promise<void> 
     {
       await this.teamsService.readTeams().subscribe((teams: Teams[]) => {
@@ -75,42 +73,28 @@ export class TeamsComponent implements OnInit{
       });
     }
 
-    //Abrir Modal
-    openModalAdd() {
+    testeModal() {
       this.poModal.open();
     }
   
-    //Adicionar Times
-    private addTeams() {
+
+    private proccessOrder() {
       if (this.form.invalid) {
         const orderInvalidMessage = 'Todos os itens são obrigatórios';
         this.poNotification.warning(orderInvalidMessage);
       } else {
         this.confirm.loading = true;
   
-        setTimeout(async () => {
-          let team: Teams = new Teams;
-          team.nome = this.teamName;
-          team.pais_id = parseInt(this.countryId);
-
-          try{
-            await this.teamsService.addTeams(team).subscribe(() => {
-              this.LoadTeams();
-            });
-          }
-          catch(e){
-          }
-
+        setTimeout(() => {
+          //this.poNotification.success(`Your order confirmed: ${this.fruits}, with accompaniment: ${this.accompaniment}.`);
           this.confirm.loading = false;
           this.closeModal();
         }, 700);
       }
     }
 
-    //Fechar modal
     closeModal() {
       this.form.reset();
       this.poModal.close();
     }
-
 }
