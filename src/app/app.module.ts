@@ -21,6 +21,7 @@ import { CountryComponent } from './modules/Country/Country.component';
 import { BetsComponent } from './modules/Bets/Bets.component';
 import { MarketComponent } from './modules/Market/Market.component';
 import { CompetitionsComponent } from './modules/Competitions/Competitions.component';
+import { BetsAddEditComponent } from './modules/Bets/BetsAddEdit/BetsAddEdit.component';
 
 //Components-Shared
 import { ManagementTableComponent } from './shared/components/management-table/management-table.component';
@@ -46,6 +47,7 @@ import { TesteComponent } from './modules/Teste/Teste.component';
     BetsComponent,
     MarketComponent,
     CompetitionsComponent,
+    BetsAddEditComponent,
     TesteComponent
   ],
   imports: [

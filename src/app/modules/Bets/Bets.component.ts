@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { PoModalComponent } from '@po-ui/ng-components';
 import { Bet } from 'src/app/models/bets.model';
 import { BetsService } from 'src/app/shared/services/bets.service';
 
@@ -18,7 +17,7 @@ export class BetsComponent implements OnInit{
 
     columns = [
         { property: 'id', label: 'ID' },
-        { property: 'dataAposta', label: 'Data' },
+        { property: 'dataAposta', label: 'Data', type: 'date' },
         { property: 'competicao_id', label: 'competição' },
         { property: 'mandante_id', label: 'mandante' },
         { property: 'visitante_id', label: 'visitante' },
@@ -39,6 +38,10 @@ export class BetsComponent implements OnInit{
       await this.betsService.readBets().subscribe((bets: Bet[]) => {
         this.bets = bets;
       });
+    }
+
+    changePageBetsAddEdit(){
+      this.router.navigate(['betsAddEdit']);
     }
 
   

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <a class="navbar-brand" href="#">Apostas</a>
-    <!-- <po-button p-label="Adicionar" > </po-button> -->
+    <po-button p-label="Adicionar" (p-click)="changePageBetsAddEdit()"> </po-button>
   </nav>
-  <po-table style="width: 20%;" [p-columns]="columns" [p-items]="bets">
+  <po-table [p-sort]="true" style="width: 20%;" [p-columns]="columns" [p-items]="bets">
   </po-table>
   
 

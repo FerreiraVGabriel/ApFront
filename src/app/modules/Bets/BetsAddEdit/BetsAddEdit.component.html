@@ -1,0 +1,48 @@
+<form #optionsForm="ngForm">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label>Data</label>
+        <input type="date" name="betDate" id="betDate"  [(ngModel)]="betDate" class="form-control" placeholder="Data da aposta" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Mandante</label>
+        <select class="form-control" name="dropDownTeamsHome" id="dropDownTeamsHome" 
+                [(ngModel)]="teamHomeId" required>
+          <option *ngFor="let teamHome of teamsHome" [value]="teamHome.id">{{teamHome.nome}}</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Visitante</label>
+        <select class="form-control" name="dropDownTeamsVisitor" id="dropDownTeamsVisitor" 
+                [(ngModel)]="teamVisitorId" required>
+          <option *ngFor="let teamVisitor of teamsVisitor" [value]="teamVisitor.id">{{teamVisitor.nome}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label>Competição</label>
+            <select class="form-control" name="dropDownCompetition" id="dropDownCompetition" 
+              [(ngModel)]="competitionId" required>
+              <option *ngFor="let competition of competitions" [value]="competition.id">{{competition.nome}}</option>
+            </select>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>Mercado</label>
+            <select class="form-control" name="dropDownmarket" id="dropDownmarket" 
+            [(ngModel)]="marketId" required>
+              <option *ngFor="let market of markets" [value]="market.id">{{market.nome}}</option>
+            </select>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>Stake</label>
+            <input type="text" name="stake" id="stake" [(ngModel)]="stake" class="form-control" placeholder="stake" required>
+            <!-- <input type="number" name="myDecimal" placeholder="Decimal" ng-model="myDecimal | number : 2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" /> -->
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>P/L</label>
+            <input type="text" name="pl" id="pl" [(ngModel)]="pl" class="form-control" placeholder="P/L" required>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="AddBet()" type="submit">Salvar</button>
+  </form>

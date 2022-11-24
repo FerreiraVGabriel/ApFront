@@ -8,6 +8,7 @@ import { CountryComponent } from './modules/Country/Country.component';
 import { BetsComponent } from './modules/Bets/Bets.component';
 import { CompetitionsComponent } from './modules/Competitions/Competitions.component';
 import { MarketComponent } from './modules/Market/Market.component';
+import { BetsAddEditComponent } from './modules/Bets/BetsAddEdit/BetsAddEdit.component';
 
 //TESTE
 import { TesteComponent } from './modules/Teste/Teste.component';
@@ -35,6 +36,9 @@ const routes: Routes = [
   }, 
   {
     path: 'market', component: MarketComponent
+  }, 
+  {
+    path: 'betsAddEdit', component: BetsAddEditComponent
   }, 
 ];
 
