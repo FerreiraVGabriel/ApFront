@@ -19,6 +19,7 @@ export class AppComponent {
     { label: 'Apostas', action: this.betsPage.bind(this) },
     { label: 'Mercado', action: this.marketPage.bind(this) },
     { label: 'Competições', action: this.competitionsPage.bind(this) },
+    { label: 'ApostasLive', action: this.liveBetsPage.bind(this) },
     { label: 'TESTE', action: this.testePage.bind(this) },
     { label: 'GABRIEL1' }
   ];
@@ -45,6 +46,10 @@ export class AppComponent {
 
   private competitionsPage() {
     this.router.navigate(['competitions']);
+  }
+
+  private liveBetsPage() {
+    this.router.navigate(['liveBets']);
   }
 
   private testePage() {

@@ -6,16 +6,17 @@
       </div>
       <div class="col-md-4 mb-3">
         <label>Mandante</label>
-        <select class="form-control" name="dropDownTeamsHome" id="dropDownTeamsHome" 
+        <select class="form-control" name="teamHomeId" id="teamHomeId" 
                 [(ngModel)]="teamHomeId" required>
-          <option *ngFor="let teamHome of teamsHome" [value]="teamHome.id">{{teamHome.nome}}</option>
+          <option selected *ngFor="let teamHome of teamsHome" [value]="teamHome.id">{{teamHome.nome}}</option>
         </select>
       </div>
       <div class="col-md-4 mb-3">
         <label>Visitante</label>
         <select class="form-control" name="dropDownTeamsVisitor" id="dropDownTeamsVisitor" 
                 [(ngModel)]="teamVisitorId" required>
-          <option *ngFor="let teamVisitor of teamsVisitor" [value]="teamVisitor.id">{{teamVisitor.nome}}</option>
+          <option value="" disabled>Escolha um país</option>
+          <option selected *ngFor="let teamVisitor of teamsVisitor" [value]="teamVisitor.id">{{teamVisitor.nome}}</option>
         </select>
       </div>
     </div>

@@ -1,0 +1,152 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <a class="navbar-brand" href="#">Apostas Live*</a>
+</nav>
+
+<form #optionsForm="ngForm">
+    <div class="row">
+      <div class="col-md-2 mb-3">
+        <label>Data</label>
+        <input type="date" name="betDate" id="betDate"  [(ngModel)]="betDate" class="form-control" placeholder="Data da aposta" required>
+      </div>
+      <div class="col-md-2 mb-3">
+        <label>Tempo</label>
+        <input type="text" name="tempo" id="tempo"  [(ngModel)]="tempoJogo" class="form-control" placeholder="tempo do jogo" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Mandante</label>
+        <select class="form-control" name="dropDownTeamsHome" id="dropDownTeamsHome" 
+                [(ngModel)]="teamHomeId" required>
+          <option *ngFor="let teamHome of teamsHome" [value]="teamHome.id">{{teamHome.nome}}</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Visitante</label>
+        <select class="form-control" name="dropDownTeamsVisitor" id="dropDownTeamsVisitor" 
+                [(ngModel)]="teamVisitorId" required>
+          <option *ngFor="let teamVisitor of teamsVisitor" [value]="teamVisitor.id">{{teamVisitor.nome}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label>Competição</label>
+            <select class="form-control" name="dropDownCompetition" id="dropDownCompetition" 
+              [(ngModel)]="competitionId" required>
+              <option *ngFor="let competition of competitions" [value]="competition.id">{{competition.nome}}</option>
+            </select>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>Mercado</label>
+            <select class="form-control" name="dropDownmarket" id="dropDownmarket" 
+            [(ngModel)]="marketId" required>
+              <option *ngFor="let market of markets" [value]="market.id">{{market.nome}}</option>
+            </select>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>Stake</label>
+            <input type="text" name="stake" id="stake" [(ngModel)]="stake" class="form-control" placeholder="stake" required>
+            <!-- <input type="number" name="myDecimal" placeholder="Decimal" ng-model="myDecimal | number : 2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" /> -->
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>P/L</label>
+            <input type="text" name="pl" id="pl" [(ngModel)]="pl" class="form-control" placeholder="P/L" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 mb-2">
+            <label>MH1 casa</label>
+            <input type="text" name="mh1Casa" id="mh1Casa" [(ngModel)]="mh1Casa" class="form-control" placeholder="MH1 casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>MH1 cisitante</label>
+            <input type="text" name="mh1Visitante" id="mh1Visitante" [(ngModel)]="mh1Visitante" class="form-control" placeholder="MH1 visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>MH2 casa</label>
+            <input type="text" name="mh2Casa" id="mh2Casa" [(ngModel)]="mh2Casa" class="form-control" placeholder="MH2 casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>MH2 visitante</label>
+            <input type="text" name="mh2Visitante" id="mh2Visitante" [(ngModel)]="mh2Visitante" class="form-control" placeholder="MH2 visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>MH3 casa</label>
+            <input type="text" name="mh3Casa" id="mh3Casa" [(ngModel)]="mh3Casa" class="form-control" placeholder="MH3 casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>MH3 visitante</label>
+            <input type="text" name="mh3Visitante" id="mh3Visitante" [(ngModel)]="mh3Visitante" class="form-control" placeholder="MH3 visitante" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 mb-2">
+            <label>EXG casa</label>
+            <input type="text" name="exgCasa" id="exgCasa" [(ngModel)]="exgCasa" class="form-control" placeholder="EXG casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>EXG visitante</label>
+            <input type="text" name="exg" id="exgVisitante" [(ngModel)]="exgVisitante" class="form-control" placeholder="EXG visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>APM1 casa</label>
+            <input type="text" name="apm1Casa" id="apm1Casa" [(ngModel)]="apm1Casa" class="form-control" placeholder="APM1 casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>APM1 visitante</label>
+            <input type="text" name="apm1Visitante" id="apm1Visitante" [(ngModel)]="apm1Visitante" class="form-control" placeholder="APM1 visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>APM2 casa</label>
+            <input type="text" name="apm2Casa" id="apm2Casa" [(ngModel)]="apm2Casa" class="form-control" placeholder="APM2 casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>APM2 visitante</label>
+            <input type="text" name="apm2Visitante" id="apm2Visitante" [(ngModel)]="apm2Visitante" class="form-control" placeholder="APM2 visitante" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 mb-2">
+            <label>CA casa</label>
+            <input type="text" name="caCasa" id="caCasa" [(ngModel)]="caCasa" class="form-control" placeholder="CA casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>CA visitante</label>
+            <input type="text" name="caVisitante" id="caVisitante" [(ngModel)]="caVisitante" class="form-control" placeholder="CA visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>CFA casa</label>
+            <input type="text" name="cfaCasa" id="cfaCasa" [(ngModel)]="cfaCasa" class="form-control" placeholder="CFA casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>CFA visitante</label>
+            <input type="text" name="cfaVisitante" id="cfaVisitante" [(ngModel)]="cfaVisitante" class="form-control" placeholder="CFA visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>Posse de bola casa</label>
+            <input type="text" name="posseBolaCasa" id="posseBolaCasa" [(ngModel)]="posseBolaCasa" class="form-control" placeholder="Posse de bola casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>Posse de bola visitante</label>
+            <input type="text" name="posseBolaVisitante" id="posseBolaVisitante" [(ngModel)]="posseBolaVisitante" class="form-control" placeholder="Posse de bola visitante" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 mb-2">
+            <label>Ataques casa</label>
+            <input type="text" name="ataquesCasa" id="ataquesCasa" [(ngModel)]="ataquesCasa" class="form-control" placeholder="Ataques casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>Ataques visitante</label>
+            <input type="text" name="ataquesVisitante" id="ataquesVisitante" [(ngModel)]="ataquesVisitante" class="form-control" placeholder="Ataques visitante" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>Ataq perigosos casa</label>
+            <input type="text" name="ataqPerigososCasa" id="ataqPerigososCasa" [(ngModel)]="ataqPerigososCasa" class="form-control" placeholder="Ataq perigosos casa" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label>Ataq perigosos visitante</label>
+            <input type="text" name="ataqPerigososVisitante" id="ataqPerigososVisitante" [(ngModel)]="ataqPerigososVisitante" class="form-control" placeholder="Ataq perigosos visitante" required>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="AddLiveBet()" type="submit">Salvar</button>
+  </form>

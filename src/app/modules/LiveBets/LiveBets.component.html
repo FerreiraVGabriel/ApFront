@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand" href="#">Apostas Live</a>
+            <po-button p-label="Adicionar" (p-click)="changePageBetsLiveAddEdit()"> </po-button>
+         
+        </ul>
+
+        <form class="d-flex" #optionsForm="ngForm">
+            <select class="form-control me-2" name="marketId" id="marketId" 
+                [(ngModel)]="marketId" required>
+                <option value="" disabled>Choose a state</option>
+                <option selected *ngFor="let market of markets" [value]="market.id">{{market.nome}}</option>
+            </select>
+            <button (click)="getLiveBetsByMarket($event, marketId)" class="btn btn-outline-success" type="submit">Atualizar</button>
+        </form>
+      </div>
+    </div>
+</nav>
+
+<div *ngFor="let liveBetsWithTime of arrayLiveBetsWithTime">
+    <h2>{{liveBetsWithTime.title}}</h2>
+    <po-table style="width: 20%;" [p-columns]="columns" [p-items]="liveBetsWithTime.liveBets">
+    </po-table>
+</div>

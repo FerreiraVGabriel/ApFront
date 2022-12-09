@@ -1,0 +1,34 @@
+export class LiveBets {
+    id: number; 
+    dataAposta: Date;
+    competicao_id: number;
+    mandante_id: number;
+    visitante_id: number;
+    mercados_id: number;
+    stake: number;
+    pl: number;
+    roiStake: number;
+    tempo: number;
+    mh1Casa: number;
+    mh2Casa: number;
+    mh3Casa: number;
+    exgCasa: number;
+    apm1Casa: number;
+    apm2Casa: number;
+    mh1Visitante: number;
+    mh2Visitante: number;
+    mh3Visitante: number;
+    exgVisitante: number;
+    apm1Visitante: number;
+    apm2Visitante: number;
+    caCasa: number;
+    caVisitante: number;
+    cfaCasa: number;
+    cfaVisitante: number;
+    posseBolaCasa: number;
+    posseBolaVisitante: number;
+    ataquesCasa: number;
+    ataquesVisitante: number;
+    ataqPerigososCasa: number;
+    ataqPerigososVisitante: number;
+}

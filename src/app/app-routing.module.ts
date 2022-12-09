@@ -9,6 +9,8 @@ import { BetsComponent } from './modules/Bets/Bets.component';
 import { CompetitionsComponent } from './modules/Competitions/Competitions.component';
 import { MarketComponent } from './modules/Market/Market.component';
 import { BetsAddEditComponent } from './modules/Bets/BetsAddEdit/BetsAddEdit.component';
+import { LiveBetsComponent } from './modules/LiveBets/LiveBets.component';
+import { LiveBetsAddEditComponent } from './modules/LiveBets/LiveBetsAddEdit/LiveBetsAddEdit.component';
 
 //TESTE
 import { TesteComponent } from './modules/Teste/Teste.component';
@@ -39,6 +41,12 @@ const routes: Routes = [
   }, 
   {
     path: 'betsAddEdit', component: BetsAddEditComponent
+  }, 
+  {
+    path: 'liveBets', component: LiveBetsComponent
+  }, 
+  {
+    path: 'liveBetsAddEdit', component: LiveBetsAddEditComponent
   }, 
 ];
 

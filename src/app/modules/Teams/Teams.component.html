@@ -17,7 +17,8 @@
         <label for="inputState">País do time</label>
         <select class="form-control" name="dropDownCountry" id="dropDownCountry" 
                 [(ngModel)]="countryId" required>
-          <option *ngFor="let country of countries" [value]="country.id">{{country.nome}}</option>
+          <option value="" disabled>Escolha um país</option>
+          <option selected *ngFor="let country of countries" [value]="country.id">{{country.nome}}</option>
         </select>
       </div>
     </div>

@@ -10,11 +10,16 @@
           </li>
          
         </ul>
-        <form class="d-flex" role="search">
+          <form class="d-flex" role="search">
+            <select class="form-control me-2" name="dropDownFilter" id="dropDownFilter" 
+              [(ngModel)]="filterId" required>
+              <option value="" disabled>Escolha um filtro</option>
+              <option selected *ngFor="let filter of filters" [value]="filter.id">{{filter.nome}}</option>
+            </select>
             <input class="form-control me-2" type="search" placeholder="Valor Inicial" aria-label="Search">
             <input class="form-control me-2" type="search" placeholder="Gestão" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success" type="submit">Atualizar</button>
           </form>
       </div>
     </div>
-  </nav>
+</nav>

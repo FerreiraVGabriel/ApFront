@@ -15,9 +15,9 @@
         </div>
         <div class="form-group col-md-6 mb-3">
           <label for="inputState">País da competição</label>
-          <select class="form-control" name="dropDownCountry" id="dropDownCountry" [(ngModel)]="countryId" required>
-            <option selected>Selecione um pais</option>
-            <option *ngFor="let country of countries" [value]="country.id">{{country.nome}}</option>
+          <select class="form-control" name="countryId" id="countryId" [(ngModel)]="countryId" required>
+            <option value="" disabled>Escolha um país</option>
+            <option selected *ngFor="let country of countries" [value]="country.id">{{country.nome}}</option>
           </select>
         </div>
       </div>

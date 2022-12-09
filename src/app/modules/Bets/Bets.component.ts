@@ -16,16 +16,16 @@ export class BetsComponent implements OnInit{
     public constructor(private betsService:BetsService, public router:Router){}
 
     columns = [
-        { property: 'id', label: 'ID' },
-        { property: 'dataAposta', label: 'Data', type: 'date' },
-        { property: 'competicao_id', label: 'competição' },
-        { property: 'mandante_id', label: 'mandante' },
-        { property: 'visitante_id', label: 'visitante' },
-        { property: 'mercados_id', label: 'mercados' },
-        { property: 'stake', label: 'stake' },
-        { property: 'pl', label: 'pl' },
-        { property: 'roiStake', label: 'roiStake' },
-        { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
+      { property: 'id', label: 'ID' },
+      { property: 'dataAposta', label: 'Data', type: 'date' },
+      { property: 'competicao_id', label: 'competição' },
+      { property: 'mandante_id', label: 'mandante' },
+      { property: 'visitante_id', label: 'visitante' },
+      { property: 'mercados_id', label: 'mercados' },
+      { property: 'stake', label: 'stake' },
+      { property: 'pl', label: 'pl' },
+      { property: 'roiStake', label: 'roiStake' },
+      { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
     ];
     
     ngOnInit(): void {
