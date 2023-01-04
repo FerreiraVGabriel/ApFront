@@ -8,7 +8,7 @@ import { MarketService } from 'src/app/shared/services/market.service';
 import { TeamsService } from 'src/app/shared/services/teams.service';
 import { PoNotificationService } from '@po-ui/ng-components';
 import { NgForm } from '@angular/forms';
-import { LiveBets } from 'src/app/models/liveBets.model';
+import { LiveBets } from 'src/app/models/LiveBets/liveBets.model';
 import { LiveBetsService } from 'src/app/shared/services/liveBets.service';
 
 

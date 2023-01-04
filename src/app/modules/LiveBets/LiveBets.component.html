@@ -20,7 +20,15 @@
 </nav>
 
 <div *ngFor="let liveBetsWithTime of arrayLiveBetsWithTime">
-    <h2>{{liveBetsWithTime.title}}</h2>
-    <po-table style="width: 20%;" [p-columns]="columns" [p-items]="liveBetsWithTime.liveBets">
+    <h2>{{liveBetsWithTime.titulo}}</h2>
+    <po-table style="width: 20%;" [p-columns]="columns" [p-items]="liveBetsWithTime.apostasLive">
+    </po-table>
+    <!-- <div class="row" *ngFor="let betWithTime of liveBetsWithTime.estatisticasApostasLive">
+        <ng-container class="col-lg-4">
+            <h4>{{betWithTime.titulo}}</h4>
+            <h4>{{betWithTime.mediaValoresMaior}}</h4>
+        </ng-container>
+    </div> -->
+    <po-table style="width: 20%;" [p-columns]="columnsStatistics" [p-items]="liveBetsWithTime.estatisticasApostasLive">
     </po-table>
 </div>

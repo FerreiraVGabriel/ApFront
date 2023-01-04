@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Bet } from 'src/app/models/bets.model';
-import { LiveBets } from 'src/app/models/liveBets.model';
+import { LiveBets } from 'src/app/models/LiveBets/liveBets.model';
+import { LiveBetsWithTime } from 'src/app/models/LiveBets/liveBetsWithTime';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,14 @@ export class LiveBetsService  {
   urlServiceREST = 'http://localhost:82/apostasLive';
     constructor(private httpClient: HttpClient) { }
 
-    readLiveBets() {
+    readLiveBets(marketId: string) {
         try {
-          return this.httpClient.get<LiveBets[]>(this.urlServiceREST);
+          this.urlServiceREST = 'http://localhost:82/apostasLive';
+          //let queryParams = new HttpParams();
+          //queryParams = queryParams.append("idMercado",marketId);
+          this.urlServiceREST = this.urlServiceREST+"/"+marketId;
+
+          return this.httpClient.get<LiveBetsWithTime[]>(this.urlServiceREST);
         }
         catch (e) {
         }
