@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Filter } from 'src/app/models/filter.model';
 import { FilterService } from 'src/app/shared/services/filter.service';
 
@@ -10,6 +11,8 @@ import { FilterService } from 'src/app/shared/services/filter.service';
 })
 
 export class NavBarItensComponent implements OnInit{
+
+  @ViewChild('optionsForm', { static: true }) form: NgForm;
 
   public constructor(private filterService:FilterService){}
 
@@ -25,5 +28,9 @@ export class NavBarItensComponent implements OnInit{
     await this.filterService.readFilter().subscribe((filters: Filter[]) => {
       this.filters = filters;
     });
+  }
+
+  async FilterLiveBet(){
+   var x = this.filterId;
   }
 }

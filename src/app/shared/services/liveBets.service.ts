@@ -54,13 +54,25 @@ export class LiveBetsService  {
         formData.append("CAVisitante", liveBet.caVisitante);
         formData.append("CFACasa", liveBet.cfaCasa);
         formData.append("CFAVisitante", liveBet.cfaVisitante);
-        formData.append("PL", liveBet.pl);
-        formData.append("AtaquesCasa", liveBet.ataquesCasa);
-        formData.append("AtaquesVisitante", liveBet.ataquesVisitante);
-        formData.append("AtaqPerigososCasa", liveBet.ataqPerigososCasa);
-        formData.append("AtaqPerigososVisitante", liveBet.ataqPerigososVisitante);
-        formData.append("PosseBolaCasa", liveBet.posseBolaCasa);
-        formData.append("PosseBolaVisitante", liveBet.posseBolaVisitante);
+
+        if(liveBet.ataquesCasa != undefined)
+          formData.append("AtaquesCasa", liveBet.ataquesCasa);
+
+        if(liveBet.ataquesVisitante != undefined)
+          formData.append("AtaquesVisitante", liveBet.ataquesVisitante);
+
+        if(liveBet.ataqPerigososCasa != undefined)
+          formData.append("AtaqPerigososCasa", liveBet.ataqPerigososCasa);
+
+        if(liveBet.ataqPerigososVisitante != undefined)
+          formData.append("AtaqPerigososVisitante", liveBet.ataqPerigososVisitante);
+
+        if(liveBet.posseBolaCasa != undefined)
+          formData.append("PosseBolaCasa", liveBet.posseBolaCasa);
+
+        if(liveBet.posseBolaVisitante != undefined)
+          formData.append("PosseBolaVisitante", liveBet.posseBolaVisitante);
+
         return this.httpClient.post(this.urlServiceREST, formData);
       }
       catch (e) {

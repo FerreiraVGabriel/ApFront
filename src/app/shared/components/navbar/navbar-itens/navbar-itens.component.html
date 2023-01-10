@@ -10,7 +10,7 @@
           </li>
          
         </ul>
-          <form class="d-flex" role="search">
+          <form #optionsForm="ngForm" class="d-flex" role="search">
             <select class="form-control me-2" name="dropDownFilter" id="dropDownFilter" 
               [(ngModel)]="filterId" required>
               <option value="" disabled>Escolha um filtro</option>
@@ -18,7 +18,7 @@
             </select>
             <input class="form-control me-2" type="search" placeholder="Valor Inicial" aria-label="Search">
             <input class="form-control me-2" type="search" placeholder="Gestão" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Atualizar</button>
+            <button class="btn btn-outline-success" (click)="FilterLiveBet()" type="submit">Atualizar</button>
           </form>
       </div>
     </div>

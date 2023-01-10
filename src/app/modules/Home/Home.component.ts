@@ -13,18 +13,26 @@ import { TeamsService } from 'src/app/shared/services/teams.service';
 
 export class HomeComponent implements OnInit{
 
-  columns = [
+  columnsProfit = [
     { property: 'DATA', label: 'DATA' },
     { property: 'pel', label: 'P&L' },
     { property: 'ROI', label: 'ROI' },
   ];
 
-  columns2 = [
-    { property: 'gab', label: 'TITULO' },
-    { property: 'gavf', label: 'DATA' },
+  columnsBet = [
+    { property: 'id', label: 'ID' },
+    { property: 'dataAposta', label: 'Data', type: 'date' },
+    { property: 'competicao_id', label: 'competição' },
+    { property: 'mandante_id', label: 'mandante' },
+    { property: 'visitante_id', label: 'visitante' },
+    { property: 'mercados_id', label: 'mercados' },
+    { property: 'stake', label: 'stake' },
+    { property: 'pl', label: 'pl' },
+    { property: 'roiStake', label: 'roiStake' },
+    { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
   ];
   
-  task:x[] = [
+  task:profit[] = [
     {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
     {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
     {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
@@ -53,13 +61,8 @@ export class HomeComponent implements OnInit{
 
 }
 
-export class x {
+export class profit {
   DATA: string;
   pel: string;
   ROI: string;
-}
-
-export class y {
-  gab: string;
-  gafv: string;
 }
