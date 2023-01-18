@@ -29,44 +29,44 @@ export class LiveBetsComponent implements OnInit{
     arrayLiveBetsWithTime: LiveBetsWithTime[];
 
     columns = [
-      { property: 'dataAposta', label: 'Data', type: 'date' },
-      { property: 'competicao_id', label: 'competição' },
-      { property: 'mandante_id', label: 'mandante' },
-      { property: 'visitante_id', label: 'visitante' },
-      { property: 'tempo', label: 'tempo' },
-      { property: 'mercados_id', label: 'mercados' },
-      { property: 'stake', label: 'stake' },
-      { property: 'pl', label: 'pl' },
-      { property: 'roiStake', label: 'roiStake' },
-      { property: 'mH1Casa', label: 'mh1Casa' },
-      { property: 'mH1Visitante', label: 'mh1Visitante' },
-      { property: 'mH2Casa', label: 'mh2Casa' },
-      { property: 'mH2Visitante', label: 'mh2Visitante' },
-      { property: 'mH3Casa', label: 'mh3Casa' },
-      { property: 'mH3Visitante', label: 'mh3Visitante' },
-      { property: 'exgCasa', label: 'exgCasa' },
-      { property: 'exgVisitante', label: 'exgVisitante' },     
-      { property: 'apM1Casa', label: 'apm1Casa' },
-      { property: 'apM1Visitante', label: 'apm1Visitante' },
-      { property: 'apM2Casa', label: 'apm2Casa' },
-      { property: 'apM2Visitante', label: 'apm2Visitante' },
-      { property: 'caCasa', label: 'caCasa' },
-      { property: 'caVisitante', label: 'caVisitante' },
-      { property: 'cfaCasa', label: 'cfaCasa' },
-      { property: 'cfaVisitante', label: 'cfaVisitante' },
-      { property: 'posseBolaCasa', label: 'posseBolaCasa' },
-      { property: 'posseBolaVisitante', label: 'posseBolaVisitante' },
-      { property: 'ataquesCasa', label: 'ataquesCasa' },
-      { property: 'ataquesVisitante', label: 'ataquesVisitante' },
-      { property: 'ataqPerigososCasa', label: 'ataqPerigososCasa' },
-      { property: 'ataqPerigososVisitante', label: 'ataqPerigososVisitante' },
+      { property: 'dataAposta', label: 'Data', type: 'date', color: this.isFavorite.bind(this) },
+      { property: 'competicao_id', label: 'competição', color: this.isFavorite.bind(this) },
+      { property: 'mandante_id', label: 'mandante', color: this.isFavorite.bind(this) },
+      { property: 'visitante_id', label: 'visitante', color: this.isFavorite.bind(this) },
+      { property: 'tempo', label: 'tempo', color: this.isFavorite.bind(this) },
+      { property: 'mercados_id', label: 'mercados', color: this.isFavorite.bind(this) },
+      { property: 'stake', label: 'stake', color: this.isFavorite.bind(this) },
+      { property: 'pl', label: 'pl' , color: this.isFavorite.bind(this) },
+      { property: 'roiStake', label: 'roiStake', color: this.isFavorite.bind(this) },
+      { property: 'mH1Casa', label: 'mh1Casa', color: this.isFavorite.bind(this) },
+      { property: 'mH1Visitante', label: 'mh1Visitante', color: this.isFavorite.bind(this) },
+      { property: 'mH2Casa', label: 'mh2Casa', color: this.isFavorite.bind(this) },
+      { property: 'mH2Visitante', label: 'mh2Visitante', color: this.isFavorite.bind(this) },
+      { property: 'mH3Casa', label: 'mh3Casa', color: this.isFavorite.bind(this) },
+      { property: 'mH3Visitante', label: 'mh3Visitante', color: this.isFavorite.bind(this) },
+      { property: 'exgCasa', label: 'exgCasa', color: this.isFavorite.bind(this) },
+      { property: 'exgVisitante', label: 'exgVisitante', color: this.isFavorite.bind(this) },     
+      { property: 'apM1Casa', label: 'apm1Casa', color: this.isFavorite.bind(this) },
+      { property: 'apM1Visitante', label: 'apm1Visitante', color: this.isFavorite.bind(this) },
+      { property: 'apM2Casa', label: 'apm2Casa', color: this.isFavorite.bind(this) },
+      { property: 'apM2Visitante', label: 'apm2Visitante', color: this.isFavorite.bind(this) },
+      { property: 'caCasa', label: 'caCasa', color: this.isFavorite.bind(this) },
+      { property: 'caVisitante', label: 'caVisitante', color: this.isFavorite.bind(this) },
+      { property: 'cfaCasa', label: 'cfaCasa', color: this.isFavorite.bind(this) },
+      { property: 'cfaVisitante', label: 'cfaVisitante', color: this.isFavorite.bind(this) },
+      { property: 'posseBolaCasa', label: 'posseBolaCasa', color: this.isFavorite.bind(this) },
+      { property: 'posseBolaVisitante', label: 'posseBolaVisitante', color: this.isFavorite.bind(this) },
+      { property: 'ataquesCasa', label: 'ataquesCasa', color: this.isFavorite.bind(this) },
+      { property: 'ataquesVisitante', label: 'ataquesVisitante', color: this.isFavorite.bind(this) },
+      { property: 'ataqPerigososCasa', label: 'ataqPerigososCasa', color: this.isFavorite.bind(this) },
+      { property: 'ataqPerigososVisitante', label: 'ataqPerigososVisitante', color: this.isFavorite.bind(this) },
 
       { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
     ];
 
     columnsStatistics = [
       { property: 'titulo', label: 'titulo' },
-      { property: 'mediaValoresMaior', label: 'media Valores Maior' },
+      { property: 'mediaValoresMaior', label: 'media Valores Maior'},
       { property: 'varianciaValoresMaior', label: 'variancia Valores Maior' },
       { property: 'desvioPadraoValoresMaior', label: 'desvio Padrao Valores Maior' },
       { property: 'mediaValoresMenores', label: 'media Valores Menores' },
@@ -102,6 +102,10 @@ export class LiveBetsComponent implements OnInit{
       });
     }
 
+    private isFavorite(row) {
+      var x =row?.pl>0? 'color-11' : 'color-07';
+      return x;
+    }
    
 
 }
