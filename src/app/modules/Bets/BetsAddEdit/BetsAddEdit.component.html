@@ -45,5 +45,15 @@
             <input type="text" name="pl" id="pl" [(ngModel)]="pl" class="form-control" placeholder="P/L" required>
         </div>
     </div>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <input class="form-check-input" type="checkbox" name="analisePre" id="analisePre" [(ngModel)]="analisePre">
+          <label >analisePre</label>
+      </div>
+      <div class="col-md-3 mb-3">
+          <input class="form-check-input" type="checkbox" name="entradaPre" id="entradaPre" [(ngModel)]="entradaPre">
+          <label >entradaPre</label>
+      </div>
+  </div>
     <button class="btn btn-primary" (click)="AddBet()" type="submit">Salvar</button>
   </form>

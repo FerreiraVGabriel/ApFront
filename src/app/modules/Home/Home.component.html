@@ -1,7 +1,7 @@
-<navbar-itens></navbar-itens>
+<navbar-itens (emitItemBetList)="setEmitBetList($event)"></navbar-itens>
 <div style="display: flex; justify-content:center; ">
   <po-table style="width: 20%;" class="borda"
-    [p-columns]="columnsProfit" [p-items]="task">
+    [p-columns]="columnsProfit" >
   </po-table>
   
   <div style="width: 20%; background-color: white;" class="borda">
@@ -9,7 +9,7 @@
   </div>
 
   <po-table style="width: 60%;" class="borda"
-    [p-columns]="columnsBet">
+    [p-columns]="columnsBet" [p-items]="bets">
   </po-table>
 </div>
 

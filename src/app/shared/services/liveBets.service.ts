@@ -14,9 +14,6 @@ export class LiveBetsService  {
 
     readLiveBets(marketId: string) {
         try {
-          this.urlServiceREST = 'http://localhost:82/apostasLive';
-          //let queryParams = new HttpParams();
-          //queryParams = queryParams.append("idMercado",marketId);
           this.urlServiceREST = this.urlServiceREST+"/"+marketId;
 
           return this.httpClient.get<LiveBetsWithTime[]>(this.urlServiceREST);

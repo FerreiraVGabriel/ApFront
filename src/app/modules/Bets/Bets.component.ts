@@ -25,6 +25,8 @@ export class BetsComponent implements OnInit{
       { property: 'stake', label: 'stake' },
       { property: 'pl', label: 'pl' },
       { property: 'roiStake', label: 'roiStake' },
+      { property: 'analisePre', label: 'analisePre' },
+      { property: 'entradaPre', label: 'entradaPre' },
       { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
     ];
     

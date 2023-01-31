@@ -42,6 +42,8 @@ export class BetsAddEditComponent implements OnInit{
     teamVisitorId: number = null;
     competitionId: number = null;
     marketId: number = null;
+    analisePre:boolean=null;
+    entradaPre:boolean=null;
 
     //Listas
     teamsHome: Teams[];
@@ -83,6 +85,12 @@ export class BetsAddEditComponent implements OnInit{
         this.poNotification.warning(orderInvalidMessage);
       }
       else{
+        if( this.analisePre == undefined)
+        this.analisePre = false;
+
+        if( this.entradaPre == undefined)
+        this.entradaPre = false;
+
         let bet: Bet = new Bet;
         bet.competicao_id = this.competitionId;
         bet.dataAposta = this.betDate;
@@ -91,6 +99,8 @@ export class BetsAddEditComponent implements OnInit{
         bet.mercados_id = this.marketId;
         bet.stake = this.stake;
         bet.pl = this.pl;
+        bet.analisePre = this.analisePre;
+        bet.entradaPre = this.entradaPre;
         try{
           await this.betService.addBet(bet).subscribe(() => {
             this.router.navigate(['bets']);

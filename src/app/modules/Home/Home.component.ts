@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { Bet } from 'src/app/models/bets.model';
 import { Teams } from 'src/app/models/teams.model';
 import { TeamsService } from 'src/app/shared/services/teams.service';
 
@@ -12,6 +13,8 @@ import { TeamsService } from 'src/app/shared/services/teams.service';
 })
 
 export class HomeComponent implements OnInit{
+
+  @Output() public emitItemTaskList = new EventEmitter();
 
   columnsProfit = [
     { property: 'DATA', label: 'DATA' },
@@ -46,20 +49,23 @@ export class HomeComponent implements OnInit{
   public constructor(private timesService:TeamsService, public router:Router){ 
 
   }
-
+  bets: Bet[];
   ngOnInit(): void {
-      this.LoadApostas();
+    var x = this.getDaysInMonth(2,2023)
   }
 
-  times: Teams[];
-  async LoadApostas(): Promise<void> 
-  {
-    await this.timesService.readTeams().subscribe((times: Teams[]) => {
-      this.times = times;
-    });
+  public setEmitBetList(event: Bet[]){
+    // this.bets.push({bet: event});
+    this.bets = event;
+  }
+
+  public getDaysInMonth(month: number,year: number): number{
+    return new Date(year, month, 0).getDate();
   }
 
 }
+
+
 
 export class profit {
   DATA: string;
