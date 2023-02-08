@@ -1,6 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Bet } from 'src/app/models/bets.model';
+import { HomeInformation } from 'src/app/models/HomeScreen/homeInformation';
+import { Information } from 'src/app/models/HomeScreen/information';
+import { RoyByDays } from 'src/app/models/HomeScreen/royByDays.model';
 import { Teams } from 'src/app/models/teams.model';
 import { TeamsService } from 'src/app/shared/services/teams.service';
 
@@ -14,12 +17,12 @@ import { TeamsService } from 'src/app/shared/services/teams.service';
 
 export class HomeComponent implements OnInit{
 
-  @Output() public emitItemTaskList = new EventEmitter();
+  @Output() public emitInformation = new EventEmitter();
 
-  columnsProfit = [
-    { property: 'DATA', label: 'DATA' },
-    { property: 'pel', label: 'P&L' },
-    { property: 'ROI', label: 'ROI' },
+  columnsRoyByDays = [
+    { property: 'data', label: 'DATA', type: 'date' },
+    { property: 'pl', label: 'P&L' },
+    { property: 'roi', label: 'ROI' },
   ];
 
   columnsBet = [
@@ -34,41 +37,22 @@ export class HomeComponent implements OnInit{
     { property: 'roiStake', label: 'roiStake' },
     { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
   ];
-  
-  task:profit[] = [
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd"},
-    {DATA: "teste", pel: 'Sentence 1', ROI:"tesd1"}
-  ];
 
   public constructor(private timesService:TeamsService, public router:Router){ 
 
   }
   bets: Bet[];
+  royByDays:RoyByDays[];
+  information:Information;
+
   ngOnInit(): void {
-    var x = this.getDaysInMonth(2,2023)
   }
 
-  public setEmitBetList(event: Bet[]){
-    // this.bets.push({bet: event});
-    this.bets = event;
+  public setEmitHomeScreen(event: HomeInformation){
+    this.bets = event.listApostas;
+    this.royByDays = event.listRoiByDays;
+    this.information = event.informacoes;
+
   }
 
-  public getDaysInMonth(month: number,year: number): number{
-    return new Date(year, month, 0).getDate();
-  }
-
-}
-
-
-
-export class profit {
-  DATA: string;
-  pel: string;
-  ROI: string;
 }

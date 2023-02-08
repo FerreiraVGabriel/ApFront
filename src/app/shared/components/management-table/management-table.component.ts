@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Information } from 'src/app/models/HomeScreen/information';
 
 
 
@@ -10,7 +11,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class ManagementTableComponent implements OnInit{
 
+  @Input() information : Information;
+
+
   ngOnInit(): void {
-      
   }
+
+  ngOnChanges(){
+    var x = this.information;
+  }
+
 }

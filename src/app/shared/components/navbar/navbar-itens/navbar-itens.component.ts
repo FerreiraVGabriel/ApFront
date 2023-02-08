@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { Bet } from 'src/app/models/bets.model';
 import { Filter } from 'src/app/models/filter.model';
-import { BetsService } from 'src/app/shared/services/bets.service';
 import { FilterService } from 'src/app/shared/services/filter.service';
 import { PoNotificationService } from '@po-ui/ng-components';
+import { HomeInformationService } from 'src/app/shared/services/homeScreen.service';
+import { HomeInformation } from 'src/app/models/HomeScreen/homeInformation';
 
 @Component({
   selector: 'navbar-itens',
@@ -15,14 +16,15 @@ import { PoNotificationService } from '@po-ui/ng-components';
 export class NavBarItensComponent implements OnInit{
 
   //sempre que esse evento for acionado ele vai emitir para os outros componentes que estão utilizando
-  @Output() public emitItemBetList = new EventEmitter();
+  @Output() public emitHomeScreen = new EventEmitter();
 
   @ViewChild('optionsForm', { static: true }) form: NgForm;
 
-  public constructor(private filterService:FilterService, private betService: BetsService, private poNotification: PoNotificationService){}
+  public constructor(private filterService:FilterService, private homeInformationService: HomeInformationService, private poNotification: PoNotificationService){}
 
   filterId: string = '';
-  arrayBetsWithFilter: Bet[];
+  arrayHomeInformation: HomeInformation;
+  initialValue : number;
 
   ngOnInit(): void {
     this.LoadFilter();
@@ -42,9 +44,10 @@ export class NavBarItensComponent implements OnInit{
       this.poNotification.warning(orderInvalidMessage);
     }
 
-    await this.betService.readFilterBets(this.filterId).subscribe((arrayBetsWithFilter: Bet[]) => {
-      this.arrayBetsWithFilter = arrayBetsWithFilter;
-      this.emitItemBetList.emit(this.arrayBetsWithFilter);
+    await this.homeInformationService.readHomeInformation(this.filterId).subscribe((arrayHomeInformation: HomeInformation) => {
+      this.arrayHomeInformation = arrayHomeInformation;
+      this.initialValue = arrayHomeInformation.informacoes.inicio;
+      this.emitHomeScreen.emit(this.arrayHomeInformation);
     });
   }
 }
