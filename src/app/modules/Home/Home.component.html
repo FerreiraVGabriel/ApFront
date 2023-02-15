@@ -1,5 +1,5 @@
 <navbar-itens (emitHomeScreen)="setEmitHomeScreen($event)"></navbar-itens>
-<div style="display: flex; justify-content:center; ">
+<div style="display: flex; justify-content:center; " *ngIf="showHomeTable">
   <po-table style="width: 20%;" class="borda"
     [p-columns]="columnsRoyByDays" [p-items]="royByDays">
   </po-table>

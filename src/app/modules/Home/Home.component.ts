@@ -20,22 +20,22 @@ export class HomeComponent implements OnInit{
   @Output() public emitInformation = new EventEmitter();
 
   columnsRoyByDays = [
-    { property: 'data', label: 'DATA', type: 'date' },
-    { property: 'pl', label: 'P&L' },
-    { property: 'roi', label: 'ROI' },
+    { property: 'data', label: 'DATA', type: 'date', color: this.profitOrLossLine.bind(this) },
+    { property: 'pl', label: 'P&L', color: this.profitOrLossLine.bind(this) },
+    { property: 'roi', label: 'ROI', color: this.profitOrLossLine.bind(this) },
   ];
 
   columnsBet = [
-    { property: 'id', label: 'ID' },
-    { property: 'dataAposta', label: 'Data', type: 'date' },
-    { property: 'competicao_id', label: 'competição' },
-    { property: 'mandante_id', label: 'mandante' },
-    { property: 'visitante_id', label: 'visitante' },
-    { property: 'mercados_id', label: 'mercados' },
-    { property: 'stake', label: 'stake' },
-    { property: 'pl', label: 'pl' },
-    { property: 'roiStake', label: 'roiStake' },
-    { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
+    { property: 'id', label: 'ID', color: this.profitOrLossLine.bind(this) },
+    { property: 'dataAposta', label: 'Data', type: 'date', color: this.profitOrLossLine.bind(this) },
+    { property: 'competicao_id', label: 'competição', color: this.profitOrLossLine.bind(this) },
+    { property: 'mandante_id', label: 'mandante', color: this.profitOrLossLine.bind(this) },
+    { property: 'visitante_id', label: 'visitante', color: this.profitOrLossLine.bind(this) },
+    { property: 'mercados_id', label: 'mercados', color: this.profitOrLossLine.bind(this) },
+    { property: 'stake', label: 'stake', color: this.profitOrLossLine.bind(this) },
+    { property: 'pl', label: 'pl', color: this.profitOrLossLine.bind(this) },
+    { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) },
+    { property: 'editar', label: 'EDITAR', type: 'cellTemplate', color: this.profitOrLossLine.bind(this) }
   ];
 
   public constructor(private timesService:TeamsService, public router:Router){ 
@@ -44,15 +44,21 @@ export class HomeComponent implements OnInit{
   bets: Bet[];
   royByDays:RoyByDays[];
   information:Information;
+  showHomeTable:boolean = false;
 
   ngOnInit(): void {
   }
 
   public setEmitHomeScreen(event: HomeInformation){
+    this.showHomeTable = true;
     this.bets = event.listApostas;
     this.royByDays = event.listRoiByDays;
     this.information = event.informacoes;
 
+  }
+
+  private profitOrLossLine(row) {
+    return row?.pl>0? 'color-11' : 'color-07';
   }
 
 }

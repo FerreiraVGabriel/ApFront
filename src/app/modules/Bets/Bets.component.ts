@@ -16,18 +16,16 @@ export class BetsComponent implements OnInit{
     public constructor(private betsService:BetsService, public router:Router){}
 
     columns = [
-      { property: 'id', label: 'ID' },
-      { property: 'dataAposta', label: 'Data', type: 'date' },
-      { property: 'competicao_id', label: 'competição' },
-      { property: 'mandante_id', label: 'mandante' },
-      { property: 'visitante_id', label: 'visitante' },
-      { property: 'mercados_id', label: 'mercados' },
-      { property: 'stake', label: 'stake' },
-      { property: 'pl', label: 'pl' },
-      { property: 'roiStake', label: 'roiStake' },
-      { property: 'analisePre', label: 'analisePre' },
-      { property: 'entradaPre', label: 'entradaPre' },
-      { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
+      { property: 'id', label: 'ID', color: this.profitOrLossLine.bind(this) },
+      { property: 'dataAposta', label: 'Data', type: 'date', color: this.profitOrLossLine.bind(this) },
+      { property: 'competicao_id', label: 'competição', color: this.profitOrLossLine.bind(this) },
+      { property: 'mandante_id', label: 'mandante', color: this.profitOrLossLine.bind(this) },
+      { property: 'visitante_id', label: 'visitante', color: this.profitOrLossLine.bind(this) },
+      { property: 'mercados_id', label: 'mercados', color: this.profitOrLossLine.bind(this) },
+      { property: 'stake', label: 'stake', color: this.profitOrLossLine.bind(this) },
+      { property: 'pl', label: 'pl', color: this.profitOrLossLine.bind(this) },
+      { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) },
+      { property: 'editar', label: 'EDITAR', type: 'cellTemplate', color: this.profitOrLossLine.bind(this) }
     ];
     
     ngOnInit(): void {
@@ -46,6 +44,8 @@ export class BetsComponent implements OnInit{
       this.router.navigate(['betsAddEdit']);
     }
 
-  
+    private profitOrLossLine(row) {
+      return row?.pl>0? 'color-11' : 'color-07';
+    }
 
 }

@@ -28,8 +28,6 @@ export class BetsService  {
         formData.append("DataAposta", bet.dataAposta);
         formData.append("Stake", bet.stake);
         formData.append("PL", bet.pl);
-        formData.append("AnalisePre", bet.analisePre);
-        formData.append("EntradaPre", bet.entradaPre);
         formData.append("Competicao_id", bet.competicao_id);
         formData.append("Mandante_id", bet.mandante_id);
         formData.append("Visitante_id", bet.visitante_id);
@@ -43,6 +41,7 @@ export class BetsService  {
 
     readFilterBets(filterId: string) {
       try {
+        this.urlServiceREST = 'http://localhost:82/apostas';
         this.urlServiceREST = this.urlServiceREST+"/"+filterId;
         return this.httpClient.get<Bet[]>(this.urlServiceREST);
       }

@@ -13,12 +13,14 @@ export class ManagementTableComponent implements OnInit{
 
   @Input() information : Information;
 
+  profit : number;
+
 
   ngOnInit(): void {
   }
 
   ngOnChanges(){
-    var x = this.information;
+    this.profit= parseFloat((this.information.final - this.information.inicio).toFixed(2));
   }
 
 }

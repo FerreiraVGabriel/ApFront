@@ -13,6 +13,7 @@ export class HomeInformationService  {
 
     readHomeInformation(filterId: string) {
         try {
+            this.urlServiceREST = 'http://localhost:82/telaPrincipal';
             this.urlServiceREST = this.urlServiceREST+"/"+filterId;
             return this.httpClient.get<HomeInformation>(this.urlServiceREST);
         }

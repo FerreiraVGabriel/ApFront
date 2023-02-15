@@ -8,6 +8,4 @@ export class Bet {
     stake: number;
     pl: number;
     roiStake: number;
-    analisePre:boolean;
-    entradaPre:boolean;
 }
