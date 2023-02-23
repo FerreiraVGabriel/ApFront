@@ -8,4 +8,8 @@ export class Bet {
     stake: number;
     pl: number;
     roiStake: number;
+    competicaoNome: string;
+    timeMandanteNome: string;
+    timeVisitanteNome: string;
+    mercadoNome: string;
 }

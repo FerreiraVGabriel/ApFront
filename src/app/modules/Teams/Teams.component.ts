@@ -29,6 +29,7 @@ export class TeamsComponent implements OnInit{
     countries: Country[];
     countryId: string = '';
     teamName:string='';
+    teste: string='gabriel';
 
     close: PoModalAction = {
       action: () => {
@@ -49,7 +50,7 @@ export class TeamsComponent implements OnInit{
     columns = [
         { property: 'id', label: 'ID' },
         { property: 'nome', label: 'Nome' },
-        { property: 'pais_id', label: 'Pais' },
+        { property: 'pais', label: 'Pais',type: 'string' },
         { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
     ];
     
