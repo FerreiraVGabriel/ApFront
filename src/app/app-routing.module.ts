@@ -14,6 +14,8 @@ import { LiveBetsAddEditComponent } from './modules/LiveBets/LiveBetsAddEdit/Liv
 
 //TESTE
 import { TesteComponent } from './modules/Teste/Teste.component';
+import { TeamsInfoComponent } from './modules/Teams/TeamsInfo/TeamsInfo.component';
+import { MarketInfoComponent } from './modules/Market/MarketInfo/MarketInfo.component';
 
 
 
@@ -47,6 +49,12 @@ const routes: Routes = [
   }, 
   {
     path: 'liveBetsAddEdit', component: LiveBetsAddEditComponent
+  }, 
+  {
+    path: 'teamsInfo', component: TeamsInfoComponent
+  }, 
+  {
+    path: 'marketInfo', component: MarketInfoComponent
   }, 
 ];
 

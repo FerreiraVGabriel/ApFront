@@ -29,7 +29,6 @@ export class TeamsComponent implements OnInit{
     countries: Country[];
     countryId: string = '';
     teamName:string='';
-    teste: string='gabriel';
 
     close: PoModalAction = {
       action: () => {
@@ -113,4 +112,7 @@ export class TeamsComponent implements OnInit{
       this.poModal.close();
     }
 
+    teamDetails(){
+      this.router.navigate(['teamsInfo']);
+    }
 }

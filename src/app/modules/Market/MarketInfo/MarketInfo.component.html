@@ -3,10 +3,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Apostas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Apostas *</a>
+            <a class="nav-link active" aria-current="page" href="#">Detalhes de Estrategia</a>
           </li>
          
         </ul>
@@ -16,9 +13,14 @@
               <option value="" disabled>Escolha um filtro</option>
               <option selected *ngFor="let filter of filters" [value]="filter.id">{{filter.nome}}</option>
             </select>
-            <span class="input-group-text me-2" >Valor inicial: R$ {{initialValue}}</span>
-            <button class="btn btn-outline-success" (click)="FilterBet()" type="submit">Atualizar</button>
+            <button class="btn btn-outline-success" (click)="LoadMarketinfo()" type="submit">Atualizar</button>
           </form>
       </div>
     </div>
 </nav>
+
+<div *ngFor="let onemarketInfo of marketInfo">
+    <h2>{{onemarketInfo.titulo}}</h2>
+    <po-table style="width: 20%;" [p-columns]="columns" [p-items]="onemarketInfo.apostasInfoDetalhes">
+    </po-table>
+</div>

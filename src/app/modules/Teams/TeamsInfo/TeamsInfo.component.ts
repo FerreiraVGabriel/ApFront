@@ -1,0 +1,57 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Filter } from 'src/app/models/filter.model';
+import { InfoBet } from 'src/app/models/InfoBet/InfoBet.model';
+import { FilterService } from 'src/app/shared/services/filter.service';
+import { InfoBetService } from 'src/app/shared/services/infoBet.service';
+import { PoNotificationService } from '@po-ui/ng-components';
+
+
+@Component({
+  selector: 'teamsInfo',
+  templateUrl: './TeamsInfo.component.html',
+  styleUrls: ['./TeamsInfo.component.css']
+})
+
+export class TeamsInfoComponent implements OnInit{
+
+  @ViewChild('optionsForm', { static: true }) form: NgForm;
+
+  public constructor(private infoBetService:InfoBetService,private filterService:FilterService, 
+                     private poNotification: PoNotificationService){}
+
+    columns = [
+    { property: 'periodoNome', label: 'periodo' },
+    { property: 'lucroPerda', label: 'lucro/Perda'},
+    { property: 'green', label: 'green' },
+    { property: 'red', label: 'red' },
+    { property: 'numApostas', label: 'numApostas' }
+  ];
+
+   marketInfo: InfoBet[];
+    filterId: string = '';
+    
+    ngOnInit(): void {
+      this.LoadFilter();
+    }
+
+    filters: Filter[];
+    async LoadFilter(): Promise<void> 
+    {
+      await this.filterService.readFilter().subscribe((filters: Filter[]) => {
+        this.filters = filters;
+      });
+    }
+    
+    async LoadTeamsinfo(){
+      if (this.form.invalid) {
+        const orderInvalidMessage = 'Digite o filtro, idiota.';
+        this.poNotification.warning(orderInvalidMessage);
+      }
+  
+      await this.infoBetService.readTeamsInfo(this.filterId).subscribe((marketInfo: InfoBet[]) => {
+        this.marketInfo = marketInfo;
+      });
+    }
+
+}

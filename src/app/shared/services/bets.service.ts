@@ -47,7 +47,6 @@ export class BetsService  {
       }
       catch (e) {
       }
-  
-  }
+    }
   
 }

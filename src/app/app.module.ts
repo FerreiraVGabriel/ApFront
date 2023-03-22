@@ -24,6 +24,8 @@ import { CompetitionsComponent } from './modules/Competitions/Competitions.compo
 import { BetsAddEditComponent } from './modules/Bets/BetsAddEdit/BetsAddEdit.component';
 import { LiveBetsComponent } from './modules/LiveBets/LiveBets.component';
 import { LiveBetsAddEditComponent } from './modules/LiveBets/LiveBetsAddEdit/LiveBetsAddEdit.component';
+import { TeamsInfoComponent } from './modules/Teams/TeamsInfo/TeamsInfo.component';
+import { MarketInfoComponent } from './modules/Market/MarketInfo/MarketInfo.component';
 
 //Components-Shared
 import { ManagementTableComponent } from './shared/components/management-table/management-table.component';
@@ -52,7 +54,9 @@ import { TesteComponent } from './modules/Teste/Teste.component';
     BetsAddEditComponent,
     LiveBetsComponent,
     LiveBetsAddEditComponent,
-    TesteComponent
+    TesteComponent,
+    TeamsInfoComponent,
+    MarketInfoComponent
   ],
   imports: [
     BrowserModule,

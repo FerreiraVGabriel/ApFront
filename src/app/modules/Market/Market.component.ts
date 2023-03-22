@@ -90,6 +90,7 @@ export class MarketComponent implements OnInit{
       this.poModal.close();
     }
 
-  
-
+    marketDetails(){
+      this.router.navigate(['marketInfo']);
+    }
 }

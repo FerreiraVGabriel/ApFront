@@ -20,7 +20,8 @@ export class NavBarItensComponent implements OnInit{
 
   @ViewChild('optionsForm', { static: true }) form: NgForm;
 
-  public constructor(private filterService:FilterService, private homeInformationService: HomeInformationService, private poNotification: PoNotificationService){}
+  public constructor(private filterService:FilterService, private homeInformationService: HomeInformationService,
+                     private poNotification: PoNotificationService){}
 
   filterId: string = '';
   arrayHomeInformation: HomeInformation;
@@ -38,7 +39,7 @@ export class NavBarItensComponent implements OnInit{
     });
   }
 
-  async FilterLiveBet(){
+  async FilterBet(){
     if (this.form.invalid) {
       const orderInvalidMessage = 'Digite o filtro, idiota.';
       this.poNotification.warning(orderInvalidMessage);
