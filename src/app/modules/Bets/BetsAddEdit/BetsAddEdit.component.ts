@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; // CLI imports 
 import { PoNotificationService } from '@po-ui/ng-components';
 import { Bet } from 'src/app/models/bets.model';
 import { Competition } from 'src/app/models/competition.model';
@@ -26,16 +26,12 @@ export class BetsAddEditComponent implements OnInit{
     public constructor(public router:Router, private teamsService: TeamsService,
                         private competitionService:CompetitionService, private marketService:MarketService,
                         private poNotification: PoNotificationService, private betService: BetsService){}
-    
-    ngOnInit(): void {
-        this.LoadTeams();
-        this.LoadCompetitions();
-        this.LoadMarket();
-    }
 
-    betDate:Date = null;
+    betDate: Date = null;
+    betDateString: string = null;
     stake:number = null;
     pl:number = null;
+    betId: number = null;
 
     //Form ID
     teamHomeId: number = null;
@@ -48,6 +44,26 @@ export class BetsAddEditComponent implements OnInit{
     teamsVisitor: Teams[];
     competitions: Competition[];
     markets: Market[];
+
+    bet:Bet;
+
+    
+    ngOnInit(): void {
+      this.LoadTeams();
+      this.LoadCompetitions();
+      this.LoadMarket();
+
+
+      var route = this.router.routerState.snapshot.url.toString();
+      var param= route.split("/");
+
+      if(param[2] != "null"){
+        this.GetBet(Number(param[2]));
+
+      }
+
+
+    }
 
     //Carregar times
     async LoadTeams(): Promise<void> 
@@ -73,7 +89,7 @@ export class BetsAddEditComponent implements OnInit{
       });
     }
 
-    async AddBet(){
+    SaveBet(){
       if (this.form.invalid) {
         const orderInvalidMessage = 'Todos os itens são obrigatórios';
         this.poNotification.warning(orderInvalidMessage);
@@ -83,25 +99,64 @@ export class BetsAddEditComponent implements OnInit{
         this.poNotification.warning(orderInvalidMessage);
       }
       else{
-
-        let bet: Bet = new Bet;
-        bet.competicao_id = this.competitionId;
-        bet.dataAposta = this.betDate;
-        bet.mandante_id = this.teamHomeId;
-        bet.visitante_id = this.teamVisitorId;
-        bet.mercados_id = this.marketId;
-        bet.stake = this.stake;
-        bet.pl = this.pl;
-        try{
-          await this.betService.addBet(bet).subscribe(() => {
-            this.router.navigate(['bets']);
-          });
-        }
-        catch(e){
-        }
+        if(this.betId == null)
+          this.AddBet();
+        else
+          this.UpdateBet();
       }
     }
 
+    async AddBet(){
+      let bet: Bet = new Bet;
+      bet.competicao_id = this.competitionId;
+      bet.dataApostaString = this.betDateString;
+      bet.mandante_id = this.teamHomeId;
+      bet.visitante_id = this.teamVisitorId;
+      bet.mercados_id = this.marketId;
+      bet.stake = this.stake;
+      bet.pl = this.pl;
+      try{
+        await this.betService.addBet(bet).subscribe(() => {
+          this.router.navigate(['bets']);
+        });
+      }
+      catch(e){
+      }
+    }
+
+    async UpdateBet(){
+      let bet: Bet = new Bet;
+      bet.competicao_id = this.competitionId;
+      bet.dataApostaString = this.betDateString;
+      bet.mandante_id = this.teamHomeId;
+      bet.visitante_id = this.teamVisitorId;
+      bet.mercados_id = this.marketId;
+      bet.stake = this.stake;
+      bet.pl = this.pl;
+      // try{
+      //   await this.betService.updateBet(bet).subscribe(() => {
+      //     this.router.navigate(['bets']);
+      //   });
+      // }
+      // catch(e){
+      // }
+    }
+
+    async GetBet(id: number): Promise<void> 
+    {
+      await this.betService.getBet(id).subscribe((bet: Bet) => {
+        this.bet = bet;
+        this.betDateString= new Date(bet.dataAposta).toISOString().split('T')[0];
+        this.teamHomeId = bet.mandante_id;
+        this.teamVisitorId = bet.visitante_id;
+        this.competitionId = bet.competicao_id;
+        this.marketId = bet.mercados_id;
+        this.stake = bet.stake;
+        this.pl = bet.pl;
+        this.betId = bet.id;
+
+      });
+    }
   
 
 }

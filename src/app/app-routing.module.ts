@@ -42,7 +42,7 @@ const routes: Routes = [
     path: 'market', component: MarketComponent
   }, 
   {
-    path: 'betsAddEdit', component: BetsAddEditComponent
+    path: 'betsAddEdit/:row', component: BetsAddEditComponent
   }, 
   {
     path: 'liveBets', component: LiveBetsComponent

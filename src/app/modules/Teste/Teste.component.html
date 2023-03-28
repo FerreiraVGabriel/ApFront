@@ -1,36 +1,7 @@
-
-
-
-<form>
-  <div class="row">
-    <div class="form-group col-md-6 mb-3">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity" [(ngModel)]="teste">
-    </div>
-    <div class="form-group col-md-6 mb-3">
-      <label for="inputState">State</label>
-      <select class="form-control" name="dropDownCountry" id="dropDownCountry" [(ngModel)]="countryId" required>
-        <option selected>Selecione um pais</option>
-        <option *ngFor="let country of countries" [value]="country.id">{{country.nome}}</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationDefault03">City</label>
-      <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationDefault04">State</label>
-      <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationDefault05">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
-    </div>
-  </div> -->
-
-  <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
-
+<nav class="navbar navbar-expand-lg bg-light">
+  <span class="po-icon po-icon-device-desktop"></span>
+  <a class="navbar-brand" href="#">Apostas</a>
+  <po-button p-label="Adicionar" (p-click)="changePageBetsAddEdit()"> </po-button>
+</nav>
+<po-table [p-sort]="true" p-single-select="true" style="width: 20%;" [p-columns]="columns" [p-items]="bets">
+</po-table>

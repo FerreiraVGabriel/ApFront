@@ -13,6 +13,7 @@ import { PoNavbarModule } from '@po-ui/ng-components';
 import { PoDropdownModule } from '@po-ui/ng-components';
 import { PoModalModule } from '@po-ui/ng-components';
 import { PoFieldModule, PoModule } from '@po-ui/ng-components';
+import { PoPageDynamicTableModule } from '@po-ui/ng-templates';
 
 //Components
 import { HomeComponent } from './modules/Home/Home.component';
@@ -71,7 +72,8 @@ import { TesteComponent } from './modules/Teste/Teste.component';
     PoModalModule,
     PoFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PoPageDynamicTableModule
     
   ],
   providers: [],

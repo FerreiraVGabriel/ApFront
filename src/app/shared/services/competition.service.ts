@@ -21,16 +21,10 @@ export class CompetitionService  {
     }
     
     addCompetition(competition:Competition) {
-      try {
-        //form
         var formData: any = new FormData();
         formData.append("nome", competition.nome);
         formData.append("pais_id", competition.pais_id);
         return this.httpClient.post(this.urlServiceREST, formData);
-      }
-      catch (e) {
-        var z =0;
-      }
     }
   
 }

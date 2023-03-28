@@ -23,6 +23,7 @@
     "@angular/router": "~10.0.0",
     "@material/form-field": "^14.0.0",
     "@po-ui/ng-components": "^3.14.0",
+    "@po-ui/ng-templates": "^3.14.0",
     "angular-popper": "^2.0.1",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",

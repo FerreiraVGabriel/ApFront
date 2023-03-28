@@ -11,10 +11,10 @@ export class HomeInformationService  {
     urlServiceREST = 'http://localhost:82/telaPrincipal';
     constructor(private httpClient: HttpClient) { }
 
-    readHomeInformation(filterId: string) {
+    readHomeInformation(filterId: string, stringMarketId: string, filterType: string) {
         try {
             this.urlServiceREST = 'http://localhost:82/telaPrincipal';
-            this.urlServiceREST = this.urlServiceREST+"/"+filterId;
+            this.urlServiceREST = this.urlServiceREST+"/"+filterId+"/"+stringMarketId+"/"+filterType;
             return this.httpClient.get<HomeInformation>(this.urlServiceREST);
         }
         catch (e) {

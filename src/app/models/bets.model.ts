@@ -1,6 +1,7 @@
 export class Bet {
     id: number; 
     dataAposta: Date;
+    dataApostaString: string;
     competicao_id: number;
     mandante_id: number;
     visitante_id: number;

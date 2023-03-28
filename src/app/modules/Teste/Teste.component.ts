@@ -1,11 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PoCheckboxGroupOption, PoComboOption, PoModalAction, PoModalComponent, PoNotificationService } from '@po-ui/ng-components';
+import { PoCheckboxGroupOption, PoComboOption, PoDynamicViewField, PoModalAction, PoModalComponent, PoNotificationService, PoTableColumn, PoTableColumnLabel } from '@po-ui/ng-components';
+import { Bet } from 'src/app/models/bets.model';
 import { Country } from 'src/app/models/country.model';
 import { Teams } from 'src/app/models/teams.model';
+import { BetsService } from 'src/app/shared/services/bets.service';
 import { CountryService } from 'src/app/shared/services/country.service';
 import { TeamsService } from 'src/app/shared/services/teams.service';
+import {
+  PoPageDynamicTableActions,
+  PoPageDynamicTableCustomAction,
+  PoPageDynamicTableCustomTableAction
+} from '@po-ui/ng-templates';
 
 
 @Component({
@@ -16,85 +23,57 @@ import { TeamsService } from 'src/app/shared/services/teams.service';
 
 export class TesteComponent implements OnInit{
    
-  @ViewChild('optionsForm', { static: true }) form: NgForm;
-  @ViewChild(PoModalComponent, { static: true }) poModal: PoModalComponent;
-  
-
-    public constructor(private teamsService:TeamsService,private countryService:CountryService, 
-                        public router:Router, private poNotification: PoNotificationService){}
-
-    teams: Teams[];
-    countries: Country[];
-    option: PoComboOption;
-    countryId: string = '';
-    team:string='';
-    teste:string='';
-
-    close: PoModalAction = {
-      action: () => {
-        this.closeModal();
-      },
-      label: 'Close',
-      danger: true
-    };
-  
-    confirm: PoModalAction = {
-      action: () => {
-        this.proccessOrder();
-      },
-      label: 'Confirm'
-    };
-    
+  public constructor(private betsService:BetsService, public router:Router){}
 
     columns = [
-        { property: 'id', label: 'ID' },
-        { property: 'nome', label: 'Nome' },
-        { property: 'pais_id', label: 'Pais' },
-        { property: 'editar', label: 'EDITAR', type: 'cellTemplate' }
+      {
+        property: 'id',
+        label: 'ID',
+        type: 'link',
+        tooltip: 'Editar aposta',
+        action: (value,row) => {
+          this.editBet(value);
+        },
+        color: this.profitOrLossLine.bind(this)
+      },
+      { property: 'dataAposta', label: 'Data', type: 'date', color: this.profitOrLossLine.bind(this) },
+      { property: 'competicaoNome', label: 'competição', color: this.profitOrLossLine.bind(this) },
+      { property: 'timeMandanteNome', label: 'mandante', color: this.profitOrLossLine.bind(this) },
+      { property: 'timeVisitanteNome', label: 'visitante', color: this.profitOrLossLine.bind(this) },
+      { property: 'mercadoNome', label: 'mercados', color: this.profitOrLossLine.bind(this) },
+      { property: 'stake', label: 'stake', color: this.profitOrLossLine.bind(this) },
+      { property: 'pl', label: 'pl', color: this.profitOrLossLine.bind(this) },
+      { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) }
     ];
     
     ngOnInit(): void {
-      this.LoadTeams();
-      this.LoadCountry();
+        this.LoadBets();
     }
-
-
-    async LoadCountry(): Promise<void> 
+  
+    bets: Bet[];
+    async LoadBets(): Promise<void> 
     {
-      await this.countryService.readCountry().subscribe((countries: Country[]) => {
-        this.countries = countries;
+      await this.betsService.readBets().subscribe((bets: Bet[]) => {
+        this.bets = bets;
       });
     }
 
-    async LoadTeams(): Promise<void> 
-    {
-      await this.teamsService.readTeams().subscribe((teams: Teams[]) => {
-        this.teams = teams;
-      });
+    changePageBetsAddEdit(){
+      this.router.navigate(['betsAddEdit']);
     }
 
-    testeModal() {
-      this.poModal.open();
+    private profitOrLossLine(row) {
+      return row?.pl>0? 'color-11' : 'color-07';
+    }
+
+    private favorite(row) {
+      row.component.isFavorite = !row.component.isFavorite;
     }
   
-
-    private proccessOrder() {
-      if (this.form.invalid) {
-        const orderInvalidMessage = 'Todos os itens são obrigatórios';
-        this.poNotification.warning(orderInvalidMessage);
-      } else {
-        this.confirm.loading = true;
+    private editBet(row) {
+      var x = 0;
+      this.router.navigate(['betsAddEdit', row]);
+    }
   
-        setTimeout(() => {
-          //this.poNotification.success(`Your order confirmed: ${this.fruits}, with accompaniment: ${this.accompaniment}.`);
-          this.confirm.loading = false;
-          this.closeModal();
-        }, 700);
-      }
-    }
-
-    closeModal() {
-      this.form.reset();
-      this.poModal.close();
-    }
 }
+

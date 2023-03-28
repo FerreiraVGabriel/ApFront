@@ -1,8 +1,12 @@
 <form #optionsForm="ngForm">
     <div class="row">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-1 mb-3">
+        <label>ID</label>
+        <input type="number" name="betId" id="betId"  [(ngModel)]="betId" class="form-control" placeholder="ID" disabled>
+      </div>
+      <div class="col-md-3 mb-3">
         <label>Data</label>
-        <input type="date" name="betDate" id="betDate"  [(ngModel)]="betDate" class="form-control" placeholder="Data da aposta" required>
+        <input type="date" name="betDateString" id="betDateString"  [(ngModel)]="betDateString" class="form-control" placeholder="Data da aposta" required>
       </div>
       <div class="col-md-4 mb-3">
         <label>Mandante</label>
@@ -38,12 +42,11 @@
         <div class="col-md-3 mb-3">
             <label>Stake</label>
             <input type="text" name="stake" id="stake" [(ngModel)]="stake" class="form-control" placeholder="stake" required>
-            <!-- <input type="number" name="myDecimal" placeholder="Decimal" ng-model="myDecimal | number : 2" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" /> -->
         </div>
         <div class="col-md-3 mb-3">
             <label>P/L</label>
             <input type="text" name="pl" id="pl" [(ngModel)]="pl" class="form-control" placeholder="P/L" required>
         </div>
     </div>
-    <button class="btn btn-primary" (click)="AddBet()" type="submit">Salvar</button>
+    <button class="btn btn-primary" (click)="SaveBet()" type="submit">Salvar</button>
   </form>

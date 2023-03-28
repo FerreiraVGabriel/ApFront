@@ -1,24 +1,34 @@
-<nav class="navbar navbar-expand-lg bg-light">
+ <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Apostas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Apostas *</a>
-          </li>
-         
-        </ul>
           <form #optionsForm="ngForm" class="d-flex" role="search">
             <select class="form-control me-2" name="dropDownFilter" id="dropDownFilter" 
               [(ngModel)]="filterId" required>
               <option value="" disabled>Escolha um filtro</option>
               <option selected *ngFor="let filter of filters" [value]="filter.id">{{filter.nome}}</option>
             </select>
+
+            <po-multiselect 
+              class="form-control me-2" name="marketId" [(ngModel)]="marketId" [p-options]="marketMultiselectOption"> 
+            </po-multiselect>
+            
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" [(ngModel)]="filterType" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Normal">
+              <label class="form-check-label" for="inlineRadio1">Normal</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" [(ngModel)]="filterType" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Somente essa aposta">
+              <label class="form-check-label" for="inlineRadio2">Somente essa aposta</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" [(ngModel)]="filterType" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Exclui Aposta(s)">
+              <label class="form-check-label" for="inlineRadio3">Exclui Aposta(s) </label>
+            </div>
+
+
             <span class="input-group-text me-2" >Valor inicial: R$ {{initialValue}}</span>
             <button class="btn btn-outline-success" (click)="FilterBet()" type="submit">Atualizar</button>
           </form>
       </div>
     </div>
-</nav>
+</nav> 

@@ -16,7 +16,16 @@ export class BetsComponent implements OnInit{
     public constructor(private betsService:BetsService, public router:Router){}
 
     columns = [
-      { property: 'id', label: 'ID', color: this.profitOrLossLine.bind(this) },
+      {
+        property: 'id',
+        label: 'ID',
+        type: 'link',
+        tooltip: 'Editar aposta',
+        action: (value,row) => {
+          this.editBet(value);
+        },
+        color: this.profitOrLossLine.bind(this)
+      },
       { property: 'dataAposta', label: 'Data', type: 'date', color: this.profitOrLossLine.bind(this) },
       { property: 'competicaoNome', label: 'competição', color: this.profitOrLossLine.bind(this) },
       { property: 'timeMandanteNome', label: 'mandante', color: this.profitOrLossLine.bind(this) },
@@ -25,7 +34,6 @@ export class BetsComponent implements OnInit{
       { property: 'stake', label: 'stake', color: this.profitOrLossLine.bind(this) },
       { property: 'pl', label: 'pl', color: this.profitOrLossLine.bind(this) },
       { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) },
-      { property: 'editar', label: 'EDITAR', type: 'cellTemplate', color: this.profitOrLossLine.bind(this) }
     ];
     
     ngOnInit(): void {
@@ -41,11 +49,17 @@ export class BetsComponent implements OnInit{
     }
 
     changePageBetsAddEdit(){
-      this.router.navigate(['betsAddEdit']);
+      this.router.navigate(['betsAddEdit', "null"]);
     }
 
     private profitOrLossLine(row) {
       return row?.pl>0? 'color-11' : 'color-07';
     }
+
+    private editBet(row) {
+      this.router.navigate(['betsAddEdit', row]);
+    }
+
+    
 
 }
