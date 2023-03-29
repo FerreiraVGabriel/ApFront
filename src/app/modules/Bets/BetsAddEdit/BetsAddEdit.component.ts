@@ -126,6 +126,7 @@ export class BetsAddEditComponent implements OnInit{
 
     async UpdateBet(){
       let bet: Bet = new Bet;
+      bet.id = this.betId;
       bet.competicao_id = this.competitionId;
       bet.dataApostaString = this.betDateString;
       bet.mandante_id = this.teamHomeId;
@@ -133,13 +134,13 @@ export class BetsAddEditComponent implements OnInit{
       bet.mercados_id = this.marketId;
       bet.stake = this.stake;
       bet.pl = this.pl;
-      // try{
-      //   await this.betService.updateBet(bet).subscribe(() => {
-      //     this.router.navigate(['bets']);
-      //   });
-      // }
-      // catch(e){
-      // }
+      try{
+        await this.betService.updateBet(bet).subscribe(() => {
+          this.router.navigate(['bets']);
+        });
+      }
+      catch(e){
+      }
     }
 
     async GetBet(id: number): Promise<void> 
