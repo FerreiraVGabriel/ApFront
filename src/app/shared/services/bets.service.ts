@@ -20,6 +20,15 @@ export class BetsService  {
         }
     
     }
+
+    readBetsPagination(search: string,pagination: number) {
+      try {
+        return this.httpClient.get<Bet[]>(this.urlServiceREST+"/"+search+"/"+pagination);
+      }
+      catch (e) {
+      }
+  
+  }
     
     addBet(bet:Bet) {
       try {

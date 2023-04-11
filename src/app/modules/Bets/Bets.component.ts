@@ -36,15 +36,34 @@ export class BetsComponent implements OnInit{
       { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) },
     ];
     
+    contPagination: number;
+    
+    //enviando null o modo pesquisa é desconsiderado
+    search:string = "null";
+
     ngOnInit(): void {
+        this.contPagination = 0;
         this.LoadBets();
     }
   
     bets: Bet[];
+    betsPagination: Bet[];
     async LoadBets(): Promise<void> 
     {
-      await this.betsService.readBets().subscribe((bets: Bet[]) => {
+      this.contPagination ++;
+      await this.betsService.readBetsPagination(this.search,this.contPagination).subscribe((bets: Bet[]) => {
         this.bets = bets;
+      });
+    }
+  
+    async LoadMoreBets(): Promise<void> 
+    {
+      this.contPagination ++;
+      await this.betsService.readBetsPagination(this.search,this.contPagination).subscribe((bets: Bet[]) => {
+        this.betsPagination = bets;
+        this.betsPagination.forEach(betPagination => {
+          this.bets.push(betPagination);
+        });
       });
     }
 
@@ -53,7 +72,12 @@ export class BetsComponent implements OnInit{
     }
 
     private profitOrLossLine(row) {
-      return row?.pl>0? 'color-11' : 'color-07';
+      if(row?.pl > 0)
+        return 'color-11';
+      if(row?.pl < 0)
+        return 'color-07';
+      else
+        return 'color-08';
     }
 
     private editBet(row) {

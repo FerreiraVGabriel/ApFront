@@ -23,57 +23,76 @@ import {
 
 export class TesteComponent implements OnInit{
    
+ 
   public constructor(private betsService:BetsService, public router:Router){}
 
-    columns = [
-      {
-        property: 'id',
-        label: 'ID',
-        type: 'link',
-        tooltip: 'Editar aposta',
-        action: (value,row) => {
-          this.editBet(value);
-        },
-        color: this.profitOrLossLine.bind(this)
-      },
-      { property: 'dataAposta', label: 'Data', type: 'date', color: this.profitOrLossLine.bind(this) },
-      { property: 'competicaoNome', label: 'competição', color: this.profitOrLossLine.bind(this) },
-      { property: 'timeMandanteNome', label: 'mandante', color: this.profitOrLossLine.bind(this) },
-      { property: 'timeVisitanteNome', label: 'visitante', color: this.profitOrLossLine.bind(this) },
-      { property: 'mercadoNome', label: 'mercados', color: this.profitOrLossLine.bind(this) },
-      { property: 'stake', label: 'stake', color: this.profitOrLossLine.bind(this) },
-      { property: 'pl', label: 'pl', color: this.profitOrLossLine.bind(this) },
-      { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) }
-    ];
-    
-    ngOnInit(): void {
-        this.LoadBets();
-    }
-  
-    bets: Bet[];
-    async LoadBets(): Promise<void> 
+  columns = [
     {
-      await this.betsService.readBets().subscribe((bets: Bet[]) => {
-        this.bets = bets;
+      property: 'id',
+      label: 'ID',
+      type: 'link',
+      tooltip: 'Editar aposta',
+      action: (value,row) => {
+        this.editBet(value);
+      },
+      color: this.profitOrLossLine.bind(this)
+    },
+    { property: 'dataAposta', label: 'Data', type: 'date', color: this.profitOrLossLine.bind(this) },
+    { property: 'competicaoNome', label: 'competição', color: this.profitOrLossLine.bind(this) },
+    { property: 'timeMandanteNome', label: 'mandante', color: this.profitOrLossLine.bind(this) },
+    { property: 'timeVisitanteNome', label: 'visitante', color: this.profitOrLossLine.bind(this) },
+    { property: 'mercadoNome', label: 'mercados', color: this.profitOrLossLine.bind(this) },
+    { property: 'stake', label: 'stake', color: this.profitOrLossLine.bind(this) },
+    { property: 'pl', label: 'pl', color: this.profitOrLossLine.bind(this) },
+    { property: 'roiStake', label: 'roiStake', color: this.profitOrLossLine.bind(this) },
+  ];
+  contPagination: number;
+  ngOnInit(): void {
+      this.contPagination = 0;
+      this.LoadBets();
+  }
+
+  bets: Bet[];
+  betsPagination: Bet[];
+  async LoadBets(): Promise<void> 
+  {
+    this.contPagination ++;
+    //enviando null o modo pesquisa é desconsiderado
+    let search:string = "null";
+    await this.betsService.readBetsPagination(search,this.contPagination).subscribe((bets: Bet[]) => {
+      this.bets = bets;
+    });
+  }
+
+  async LoadMoreBets(): Promise<void> 
+  {
+    this.contPagination ++;
+    //enviando null o modo pesquisa é desconsiderado
+    let search:string = "null";
+    await this.betsService.readBetsPagination(search,this.contPagination).subscribe((bets: Bet[]) => {
+      this.betsPagination = bets;
+      this.betsPagination.forEach(betPagination => {
+        this.bets.push(betPagination);
       });
-    }
+    });
+  }
 
-    changePageBetsAddEdit(){
-      this.router.navigate(['betsAddEdit']);
-    }
+  changePageBetsAddEdit(){
+    this.router.navigate(['betsAddEdit', "null"]);
+  }
 
-    private profitOrLossLine(row) {
-      return row?.pl>0? 'color-11' : 'color-07';
-    }
+  private profitOrLossLine(row) {
+    if(row?.pl > 0)
+      return 'color-11';
+    if(row?.pl < 0)
+      return 'color-07';
+    else
+      return 'color-08';
+  }
 
-    private favorite(row) {
-      row.component.isFavorite = !row.component.isFavorite;
-    }
-  
-    private editBet(row) {
-      var x = 0;
-      this.router.navigate(['betsAddEdit', row]);
-    }
+  private editBet(row) {
+    this.router.navigate(['betsAddEdit', row]);
+  }
   
 }
 

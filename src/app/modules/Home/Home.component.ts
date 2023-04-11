@@ -57,7 +57,12 @@ export class HomeComponent implements OnInit{
   }
 
   private profitOrLossLine(row) {
-    return row?.pl>0? 'color-11' : 'color-07';
+    if(row?.pl > 0)
+      return 'color-11';
+    if(row?.pl < 0)
+      return 'color-07';
+    else
+      return 'color-08';
   }
 
 }

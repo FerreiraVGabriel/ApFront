@@ -21,11 +21,11 @@ export class MarketInfoComponent implements OnInit{
                      private poNotification: PoNotificationService){}
 
     columns = [
-    { property: 'periodoNome', label: 'periodo' },
-    { property: 'lucroPerda', label: 'lucro/Perda'},
-    { property: 'green', label: 'green' },
-    { property: 'red', label: 'red' },
-    { property: 'numApostas', label: 'numApostas' }
+    { property: 'periodoNome', label: 'periodo' ,color: this.profitOrLossLine.bind(this)},
+    { property: 'lucroPerda', label: 'lucro/Perda',color: this.profitOrLossLine.bind(this)},
+    { property: 'green', label: 'green' ,color: this.profitOrLossLine.bind(this)},
+    { property: 'red', label: 'red' ,color: this.profitOrLossLine.bind(this)},
+    { property: 'numApostas', label: 'numApostas' ,color: this.profitOrLossLine.bind(this)}
   ];
 
     marketInfo: InfoBet[];
@@ -52,5 +52,14 @@ export class MarketInfoComponent implements OnInit{
       await this.infoBetService.readMarketInfo(this.filterId).subscribe((marketInfo: InfoBet[]) => {
         this.marketInfo = marketInfo;
       });
+    }
+
+    private profitOrLossLine(row) {
+      if(row?.lucroPerda > 0)
+        return 'color-11';
+      if(row?.lucroPerda < 0)
+        return 'color-07';
+      else
+        return 'color-08';
     }
 }
