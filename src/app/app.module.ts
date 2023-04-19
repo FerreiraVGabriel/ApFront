@@ -14,6 +14,7 @@ import { PoDropdownModule } from '@po-ui/ng-components';
 import { PoModalModule } from '@po-ui/ng-components';
 import { PoFieldModule, PoModule } from '@po-ui/ng-components';
 import { PoPageDynamicTableModule } from '@po-ui/ng-templates';
+import { PoChartModule } from '@po-ui/ng-components';
 
 //Components
 import { HomeComponent } from './modules/Home/Home.component';
@@ -37,6 +38,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 //TESTE
 import { TesteComponent } from './modules/Teste/Teste.component';
+import { InformationComponent } from './modules/Information/Information.component';
 
 
 
@@ -57,7 +59,8 @@ import { TesteComponent } from './modules/Teste/Teste.component';
     LiveBetsAddEditComponent,
     TesteComponent,
     TeamsInfoComponent,
-    MarketInfoComponent
+    MarketInfoComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { TesteComponent } from './modules/Teste/Teste.component';
     PoFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    PoPageDynamicTableModule
+    PoPageDynamicTableModule,
+    PoChartModule
     
   ],
   providers: [],

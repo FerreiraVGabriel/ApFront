@@ -14,6 +14,7 @@ export class AppComponent {
 
   readonly menus: Array<PoMenuItem> = [
     { label: 'Home', action: this.homePage.bind(this) },
+    { label: 'Informações', action: this.informationPage.bind(this) },
     { label: 'Pais', action: this.countryPage.bind(this) },
     { label: 'Times', action: this.teamsPage.bind(this) },
     { label: 'Apostas', action: this.betsPage.bind(this) },
@@ -50,6 +51,10 @@ export class AppComponent {
 
   private liveBetsPage() {
     this.router.navigate(['liveBets']);
+  }
+
+  private informationPage() {
+    this.router.navigate(['information']);
   }
 
   private testePage() {

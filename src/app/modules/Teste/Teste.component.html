@@ -1,28 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <a class="navbar-brand" href="#">Apostas</a>
-  <po-button p-label="Adicionar" (p-click)="changePageBetsAddEdit()"> </po-button>
-</nav>
-
-<form class="form-inline">
-  <div class="row">
-    <div class="col-md-3 mb-3">
-      <input type="text" name="betDateString" class="form-control" placeholder="Data da aposta">
-    </div>
-    <div class="col-md-3 mb-3">
-      <button type="submit" class="btn btn-primary">Sign in</button>
-    </div>
-  </div>
-</form>
-
-<po-table [p-sort]="true" style="width: 20%;" [p-columns]="columns" [p-items]="bets">
-</po-table>
-
-<div style="text-align:center">
-  <button type="button" (click)="LoadMoreBets()" class="btn btn-primary btn-lg">Carregar Mais</button>
-</div>
-
-
-
-<!-- 
-<po-page-dynamic-table p-title="Po Page Dynamic Table" p-service-api="https://po-sample-api.fly.dev/v1/people">
-</po-page-dynamic-table> -->
+<po-chart
+  [p-series]="[
+    { label: 'Angular', data: 100 },
+    { label: 'React', data: 10 }
+  ]"
+>
+</po-chart>

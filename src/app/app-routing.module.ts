@@ -11,11 +11,13 @@ import { MarketComponent } from './modules/Market/Market.component';
 import { BetsAddEditComponent } from './modules/Bets/BetsAddEdit/BetsAddEdit.component';
 import { LiveBetsComponent } from './modules/LiveBets/LiveBets.component';
 import { LiveBetsAddEditComponent } from './modules/LiveBets/LiveBetsAddEdit/LiveBetsAddEdit.component';
+import { TeamsInfoComponent } from './modules/Teams/TeamsInfo/TeamsInfo.component';
+import { MarketInfoComponent } from './modules/Market/MarketInfo/MarketInfo.component';
+import { InformationComponent } from './modules/Information/Information.component';
 
 //TESTE
 import { TesteComponent } from './modules/Teste/Teste.component';
-import { TeamsInfoComponent } from './modules/Teams/TeamsInfo/TeamsInfo.component';
-import { MarketInfoComponent } from './modules/Market/MarketInfo/MarketInfo.component';
+
 
 
 
@@ -56,6 +58,9 @@ const routes: Routes = [
   {
     path: 'marketInfo', component: MarketInfoComponent
   }, 
+  {
+    path: 'information', component: InformationComponent
+  },
 ];
 
 @NgModule({

@@ -1,4 +1,3 @@
-import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
@@ -20,6 +19,4 @@ export class CountryService  {
         }
     
       }
-  
-  
 }
